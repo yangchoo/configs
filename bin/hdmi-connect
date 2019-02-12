@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+## Script for toggling HDMI display for systems with discrete graphics card
+# Uses optirun for switching on graphics card and intel-virtual-output & xrandr 
+# for detecting and switching outputs
+
+laptopDisp=eDP1
+hdmiDisp=VIRTUAL3
+
+# Connect if HDMI display is not connected
+if xrandr | grep "$hdmiDisp connected"; then
+    # Disable external display
+    xrandr --output "$laptopDisp" --primary --auto --output "$hdmiDisp" --off
+    # Kill intel-virtual-output to save battery
+    kill $(pgrep --full "intel-virtual-output")
+    echo "$hdmiDisp disconnected"
+else
+    # Check if port available
+    pgrep --full "intel-vitual-output" || optirun intel-virtual-output
+    if xrandr | grep "$hdmiDisp"; then 
+        # Enable external display, default to right of laptop
+        xrandr --output "$laptopDisp" --primary --auto --output "$hdmiDisp" --right-of "$laptopDisp" --auto
+    else
+        echo "Cannot detect $hdmiDisp"
+    fi
+    xrandr | grep "$hdmiDisp connected" || { 
+        echo "Detected $hdmiDisp, but unable to connect"
+        # Failed to connect, cleanup
+        kill $(pgrep --full "intel-virtual-output")
+    }
+fi
+
