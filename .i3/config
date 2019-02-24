@@ -53,10 +53,8 @@ bindsym $mod+Ctrl+m exec pavucontrol
 ################################################################################################
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-#bindsym XF86MonBrightnessUp exec ~/bin/bright -u 
-#bindsym XF86MonBrightnessDown exec ~/bin/bright -d 
+bindsym XF86MonBrightnessUp exec "~/bin/cbacklight --inc 10 --get | sed 's/intel_backlight: /brightness up; /' | xargs -0 notify-send"
+bindsym XF86MonBrightnessDown exec "~/bin/cbacklight --dec 10 --get | sed 's/intel_backlight: /brightness down; /' | xargs -0 notify-send"
 
 # Bind to external display
 bindsym $mod+F7 exec ~/bin/hdmi-connect
@@ -277,6 +275,12 @@ mode "resize" {
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
+        
+        # same bindings, but for the arrow keys
+        bindsym Ctrl+Left resize shrink width 1 px or 1 ppt
+        bindsym Ctrl+Down resize grow height 1 px or 1 ppt
+        bindsym Ctrl+Up resize shrink height 1 px or 1 ppt
+        bindsym Ctrl+Right resize grow width 1 px or 1 ppt
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
