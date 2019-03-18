@@ -10,15 +10,19 @@ format_swap = "{SUp}%"
 [[block]]
 block = "cpu"
 interval = 1
-frequency = true
+frequency = false
 
 [[block]]
 block = "net"
 device = "wlp0s20f3"
+speed_up = true
+speed_down = true
+#graph_up = true
+#graph_down = true
 
 [[block]]
 block = "temperature"
-collapsed = false
+collapsed = true
 interval = 10
 
 [[block]]

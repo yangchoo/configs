@@ -53,7 +53,7 @@ export SPACESHIP_PYENV_SYMBOL=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize pyenv python pip zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(arcanist colorize fzf git pyenv python zsh-syntax-highlighting zsh-autosuggestions)
 
 # User configuration
 bindkey -e

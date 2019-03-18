@@ -437,6 +437,3 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# Screen-saver (turn off after 5 minutes)
-#exec xset dpms 0 0 300
-
