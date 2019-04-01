@@ -33,7 +33,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -combi-modi window#drun -show combi -modi combi
+bindsym $mod+d exec --no-startup-id rofi -combi-modi window#drun -show combi -modi combi -theme base16-tomorrow-night
 bindsym $mod+shift+d exec --no-startup-id dmenu_run
 
 
@@ -41,7 +41,8 @@ bindsym $mod+shift+d exec --no-startup-id dmenu_run
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-#exec --no-startup-id volumeicon
+# TODO: Figure out why volumeicon has keyboard hooks but not i3status-rust sound block
+exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
@@ -285,7 +286,7 @@ exec --no-startup-id xautolock -time 10 -locker i3lock -i /home/yang/Pictures/i3
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id start_conky_maia
+exec --no-startup-id start_conky
 #exec --no-startup-id manjaro-hello
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id xfce4-power-manager

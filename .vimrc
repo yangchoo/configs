@@ -12,16 +12,21 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+" Base16 - Nicer themes (temp. fix until issue 197 is resolved)
+function FixupBase16(info)
+    !sed -i '/Base16hi/\! s/a:\(attr\|guisp\)/l:\1/g' ~/.vim/plugged/base16-vim/colors/*.vim
+endfunction
+Plug 'chriskempson/base16-vim', { 'do': function('FixupBase16') }
 " Lightline - Nicer status line
 Plug 'itchyny/lightline.vim'
-" Fzf - Files remapped to ;
+" Fzf - Nice files search
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 " Git Gutter
 Plug 'airblade/vim-gitgutter'
-" Multi-cursors
+" Multi-cursors - Subl-like
 Plug 'terryma/vim-multiple-cursors'
-" Vim Surround
+" Vim Surround - keyword s (e.g. cs'", ysiw])
 Plug 'tpope/vim-surround'
 call plug#end()
 
@@ -38,16 +43,15 @@ silent! while 0
   set nocompatible
 silent endwhile
 
-colorscheme Tomorrow-Night
-
 filetype plugin indent on " Automatic language based indentation
 syntax on " Automatic syntax highlighting
 
-set history=500 " keep 500 lines of command line history
-set number      " display line number on left
-set showcmd     " display incomplete commands
-set showmatch   " display matching braces
-set wildmenu    " display completion matches in a status line
+set history=500     " keep 500 lines of command line history
+set number          " display line number on left (only for current line)
+set relativenumber  " display relative line numbers (for all other lines)
+set showcmd         " display incomplete commands
+set showmatch       " display matching braces
+set wildmenu        " display completion matches in a status line
 
 " Indentation Options
 set smartindent
@@ -68,17 +72,22 @@ endif
  set splitbelow
  set splitright
 
-" Lightline Config
+
+""" Plug Configs
+" Base16 theming
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-tomorrow-night
+
+" Lightline
 set laststatus=2
 set noshowmode
 let g:lightline = {
     \    'colorscheme': 'Tomorrow_Night'
     \}
 
-" Fzf Config
+" Fzf
 map ; :Files<CR>
 
-" GitGutter Config
-" 100ms update for faster git status
-set updatetime=100
+" GitGutter
+set updatetime=100 " 100ms update for faster git status
 

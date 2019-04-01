@@ -49,7 +49,3 @@ block = "time"
 interval = 60
 format = "%a %d/%m %R"
 
-[[block]]
-block="sound"
-on_click="pavucontrol"
-
