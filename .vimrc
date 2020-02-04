@@ -28,6 +28,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 " Vim Surround - keyword s (e.g. cs'", ysiw])
 Plug 'tpope/vim-surround'
+" Syntastic
+Plug 'vim-syntastic/syntastic'
+" Rust
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -53,6 +58,10 @@ set showcmd         " display incomplete commands
 set showmatch       " display matching braces
 set wildmenu        " display completion matches in a status line
 
+" Persistent Undo
+set undodir=~/.vim/undodir
+set undofile
+
 " Indentation Options
 set smartindent
 set autoindent
@@ -68,10 +77,15 @@ if has('mouse')
   set mouse=a
 endif
 
- " Split defaults
- set splitbelow
- set splitright
+" Split defaults
+set splitbelow
+set splitright
 
+" Key Remaps
+" Easier than the standard '\'
+let mapleader=","
+" Easier Buffer Management - "+y
+noremap <Leader><leader> "+
 
 """ Plug Configs
 " Base16 theming

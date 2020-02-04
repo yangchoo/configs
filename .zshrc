@@ -1,3 +1,8 @@
+# Profiling Hook
+if [[ "$ZPROF" = true ]]; then
+  zmodload zsh/zprof
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=/home/yang/.oh-my-zsh
 
@@ -59,10 +64,38 @@ plugins=(
     fzf 
     git 
     pyenv 
-    python 
+    python
+    zsh-nvm
     zsh-syntax-highlighting 
     zsh-autosuggestions
 )
+
+# NVM Configs
+## Lazy loading for nvm
+export NVM_LAZY_LOAD=true
+
+## Auto-use of .nvmrc
+#autoload -U add-zsh-hook
+#load-nvmrc() {
+#  local node_version="$(nvm version)"
+#  local nvmrc_path="$(nvm_find_nvmrc)"
+#
+#  if [ -n "$nvmrc_path" ]; then
+#    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+#
+#    if [ "$nvmrc_node_version" = "N/A" ]; then
+#      nvm install
+#    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+#      nvm use
+#    fi
+#  elif [ "$node_version" != "$(nvm version default)" ]; then
+#    echo "Reverting to nvm default version"
+#    nvm use default
+#  fi
+#}
+#add-zsh-hook chpwd load-nvmrc
+#load-nvmrc
+#
 
 # User configuration
 bindkey -e
@@ -133,3 +166,8 @@ export FZF_DEFAULT_OPTS="
 }
 
 _gen_fzf_default_opts
+
+# End prof hook
+if [[ "$ZPROF" = true ]]; then
+  zprof
+fi
