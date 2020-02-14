@@ -1,0 +1,13 @@
+[user]
+	name = yangchoo
+[core]
+	editor = vim
+        excludesfile = /home/yang/.gitignore_global
+[diff]
+        algorithm = patience
+        tool = vimdiff
+[help]
+        autocorrect = 1
+[merge]
+        tool = vimdiff
+
