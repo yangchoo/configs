@@ -32,6 +32,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
 " Rust
 Plug 'rust-lang/rust.vim'
+" Scala
+Plug 'derekwyatt/vim-scala'
 
 call plug#end()
 
@@ -51,7 +53,7 @@ silent endwhile
 filetype plugin indent on " Automatic language based indentation
 syntax on " Automatic syntax highlighting
 
-set history=500     " keep 500 lines of command line history
+set history=1000    " keep 1000 lines of command line history
 set number          " display line number on left (only for current line)
 set relativenumber  " display relative line numbers (for all other lines)
 set showcmd         " display incomplete commands

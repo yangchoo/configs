@@ -171,3 +171,7 @@ _gen_fzf_default_opts
 if [[ "$ZPROF" = true ]]; then
   zprof
 fi
+
+# added by travis gem
+[ -f /home/yang/.travis/travis.sh ] && source /home/yang/.travis/travis.sh
+
