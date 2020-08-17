@@ -18,13 +18,13 @@ critical_fg = "#1d1f21"
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+format_mem = "{Mupi}%"
+format_swap = "{SUpi}%"
 
 [[block]]
 block = "cpu"
 interval = 1
-frequency = true
+format = "{barchart}"
 
 [[block]]
 block = "net"

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+## Script for toggling HDMI display for systems with discrete graphics card
+# Uses optirun for switching on graphics card and intel-virtual-output & xrandr 
+# for detecting and switching outputs
+
+laptopDisp=eDP-1-1
+hdmiDisp=HDMI-0
+
+# Connect if HDMI display is not connected
+#if xrandr | grep "$hdmiDisp connected"; then
+if [ "$1" == "off" ]; then
+    # Disable external display
+    xrandr --output "$laptopDisp" --primary --auto --output "$hdmiDisp" --off
+    nitrogen --restore
+    killall conky
+    conky -c /home/yang/.config/conky/conky_tomorrow_night
+    echo "$hdmiDisp disconnected"
+elif [ "$1" == "on" ]; then
+    if xrandr | grep "$hdmiDisp"; then 
+        # Enable external display, default to right of laptop
+        xrandr --output "$laptopDisp" --primary --auto --output "$hdmiDisp" --right-of "$laptopDisp" --mode 2560x1440
+        xrandr --output "$laptopDisp" --primary --auto --output "$hdmiDisp" --right-of "$laptopDisp" --mode 3840x2160
+        nitrogen --restore
+        conky -c /home/yang/.config/conky/conky_tomorrow_night_4k -m 2
+    else
+        echo "Cannot detect $hdmiDisp"
+    fi
+else
+    echo "Please specify either 'off' or 'on' as the first positional arg."
+fi
+

@@ -137,6 +137,9 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
+# move workspaces between screens
+bindsym $mod+p move workspace to output right
+
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
@@ -280,6 +283,10 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+# Remap keys
+#exec --no-startup-id xcape -e 'Control_L=Escape;Escape=grave;Shift_L|Escape=asciitilde'
+#exec --no-startup-id xcape -e 'Control_L=Escape;'
+
 # Lock screen after no activity
 exec --no-startup-id xautolock -time 10 -locker i3lock -i /home/yang/Pictures/i3lock.png, mode "default"
 
@@ -297,6 +304,9 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id pamac-tray
 #exec --no-startup-id clipit
 #exec --no-startup-id albert
+
+# Enable prime-offloading, which is used by optimus-manager.
+exec --no-startup-id "prime-offload"
 
 ### X Settings
 # Fast repeat - 250ms delay, 60hz
@@ -378,7 +388,7 @@ client.background       $base07
 #############################
 
 # Set inner/outer gaps
-gaps inner 5
+gaps inner 8
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.

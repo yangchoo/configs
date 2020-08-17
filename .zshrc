@@ -175,3 +175,6 @@ fi
 # added by travis gem
 [ -f /home/yang/.travis/travis.sh ] && source /home/yang/.travis/travis.sh
 
+
+# Created by `userpath` on 2020-06-08 09:22:32
+export PATH="$PATH:/home/yang/.local/bin"

@@ -11,3 +11,17 @@
 [merge]
         tool = vimdiff
 
+[filesystem "Oracle Corporation|1.8.0_242|/dev/nvme0n1p5"]
+	timestampResolution = 1001 microseconds
+	minRacyThreshold = 4983 microseconds
+[filesystem "Oracle Corporation|11.0.6|/dev/nvme0n1p5"]
+	timestampResolution = 6000 nanoseconds
+	minRacyThreshold = 4727 microseconds
+[filesystem "Oracle Corporation|1.8.0_252|/dev/nvme0n1p5"]
+	timestampResolution = 1001 microseconds
+	minRacyThreshold = 6523 microseconds
+[filesystem "Oracle Corporation|11.0.7|/dev/nvme0n1p5"]
+	timestampResolution = 10000 nanoseconds
+	minRacyThreshold = 3514 microseconds
+[pull]
+	ff = only

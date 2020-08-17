@@ -34,6 +34,9 @@ Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
 " Scala
 Plug 'derekwyatt/vim-scala'
+" Ranger - Explorer
+Plug 'francoiscabrol/ranger.vim'
+
 
 call plug#end()
 
