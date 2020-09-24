@@ -1,28 +1,36 @@
 #!/usr/bin/env bash
 
 ## Script for toggling HDMI display for systems with discrete graphics card
-# Uses optirun for switching on graphics card and intel-virtual-output & xrandr 
-# for detecting and switching outputs
 
 laptopDisp=eDP-1-1
 hdmiDisp=HDMI-0
 
 # Connect if HDMI display is not connected
-#if xrandr | grep "$hdmiDisp connected"; then
+#if xrandr | grep "$hdmiDisp" | grep -E "[0-9]+x[0-9]+"; then
 if [ "$1" == "off" ]; then
     # Disable external display
     xrandr --output "$laptopDisp" --primary --auto --output "$hdmiDisp" --off
     nitrogen --restore
     killall conky
     conky -c /home/yang/.config/conky/conky_tomorrow_night
+    # restore i3
+    cp /home/yang/.config/i3/config-default /home/yang/.config/i3/config
+    i3-msg reload
     echo "$hdmiDisp disconnected"
+#else
 elif [ "$1" == "on" ]; then
-    if xrandr | grep "$hdmiDisp"; then 
+    if xrandr | grep "$hdmiDisp connected"; then 
         # Enable external display, default to right of laptop
-        xrandr --output "$laptopDisp" --primary --auto --output "$hdmiDisp" --right-of "$laptopDisp" --mode 2560x1440
-        xrandr --output "$laptopDisp" --primary --auto --output "$hdmiDisp" --right-of "$laptopDisp" --mode 3840x2160
+        ## For some reason, this dance is required for the 4k monitor used here
+        xrandr --output "$laptopDisp" --auto --primary --output "$hdmiDisp" --right-of "$laptopDisp" --mode 2560x1440
+        sleep 2
+        xrandr --output "$laptopDisp" --auto --primary --output "$hdmiDisp" --right-of "$laptopDisp" --mode 3840x2160
+        killall conky
         nitrogen --restore
         conky -c /home/yang/.config/conky/conky_tomorrow_night_4k -m 2
+        # restore i3
+        cp /home/yang/.config/i3/config-4k /home/yang/.config/i3/config
+        i3-msg reload
     else
         echo "Cannot detect $hdmiDisp"
     fi

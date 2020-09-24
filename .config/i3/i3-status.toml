@@ -22,9 +22,12 @@ format_mem = "{Mupi}%"
 format_swap = "{SUpi}%"
 
 [[block]]
+block = "nvidia_gpu"
+
+[[block]]
 block = "cpu"
 interval = 1
-format = "{barchart}"
+format = "{barchart} {frequency}GHz"
 
 [[block]]
 block = "net"
