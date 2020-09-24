@@ -59,10 +59,11 @@ export SPACESHIP_PYENV_SYMBOL=""
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    arcanist 
+#    arcanist 
     colorize 
-    fzf 
-    git 
+    fzf
+    git
+    kubectl
     pyenv 
     python
     zsh-nvm
