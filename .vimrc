@@ -62,6 +62,7 @@ set relativenumber  " display relative line numbers (for all other lines)
 set showcmd         " display incomplete commands
 set showmatch       " display matching braces
 set wildmenu        " display completion matches in a status line
+set incsearch       " incremental search highlight
 
 " Persistent Undo
 set undodir=~/.vim/undodir

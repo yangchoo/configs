@@ -1,0 +1,16 @@
+" Subset of usual .vimrc, based on supported set commands
+" See https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md
+
+set history=1000    " keep 1000 lines of command line history
+set number          " display line number on left (only for current line)
+set relativenumber  " display relative line numbers (for all other lines)
+set incsearch       " incremental search highlight
+
+" Emulated plugins
+" See https://github.com/JetBrains/ideavim/blob/master/doc/emulated-plugins.md
+
+" vim-surround
+set surround    " supports ys, cs, ds, S
+
+" vim-highlightedyank
+set highlightedyank
