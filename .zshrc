@@ -179,3 +179,8 @@ fi
 
 # Created by `userpath` on 2020-06-08 09:22:32
 export PATH="$PATH:/home/yang/.local/bin"
+
+# Overide max-history by 10x
+export HISTSIZE=100000
+export SAVE_HIST=$HISTSIZE
+

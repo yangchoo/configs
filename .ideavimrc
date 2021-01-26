@@ -14,3 +14,10 @@ set surround    " supports ys, cs, ds, S
 
 " vim-highlightedyank
 set highlightedyank
+
+" Key Remaps
+" Easier than the standard '\'
+let mapleader=","
+" Easier Buffer Management - "+y
+noremap <Leader><leader> "+
+
