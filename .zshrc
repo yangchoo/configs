@@ -184,3 +184,6 @@ export PATH="$PATH:/home/yang/.local/bin"
 export HISTSIZE=100000
 export SAVE_HIST=$HISTSIZE
 
+# pbcopy/pbpaste
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'

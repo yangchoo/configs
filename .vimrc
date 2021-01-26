@@ -36,6 +36,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'derekwyatt/vim-scala'
 " Ranger - Explorer
 Plug 'francoiscabrol/ranger.vim'
+" Vim Tmux Navigator - Navigate between Vim/Tmux tabs
+Plug 'christoomey/vim-tmux-navigator'
+
 
 
 call plug#end()
@@ -92,6 +95,11 @@ set splitright
 let mapleader=","
 " Easier Buffer Management - "+y
 noremap <Leader><leader> "+
+" Easier Split Navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 """ Plug Configs
 " Base16 theming
