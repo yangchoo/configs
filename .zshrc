@@ -168,22 +168,25 @@ export FZF_DEFAULT_OPTS="
 
 _gen_fzf_default_opts
 
+# FZF config
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
 # End prof hook
 if [[ "$ZPROF" = true ]]; then
   zprof
 fi
 
-# added by travis gem
-[ -f /home/yang/.travis/travis.sh ] && source /home/yang/.travis/travis.sh
-
-
-# Created by `userpath` on 2020-06-08 09:22:32
-export PATH="$PATH:/home/yang/.local/bin"
-
 # Overide max-history by 10x
 export HISTSIZE=100000
 export SAVE_HIST=$HISTSIZE
 
+### Useful Utils
+
 # pbcopy/pbpaste
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+# Git aliases
+alias lcm='git log -1 --pretty="%b" | pbcopy'
+alias ghist="git log --branches --remotes --tags --graph --oneline --decorate --date=relative --pretty=tformat:'%Cred%h%Cgreen %ad%Creset | %s%d [%an]'"
+alias gblist="git branch --list --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
