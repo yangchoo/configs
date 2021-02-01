@@ -1,0 +1,6 @@
+configuration {
+    modi: "window,drun,ssh,combi";
+    theme: "base16-tomorrow-night";
+    font: "Fia Code 12";
+    combi-modi: "window,drun,ssh";
+}
