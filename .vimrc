@@ -28,12 +28,20 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 " Vim Surround - keyword s (e.g. cs'", ysiw])
 Plug 'tpope/vim-surround'
+" Filetype specific commenting (e.g. <leander>cc)
+Plug 'preservim/nerdcommenter'
+" Automatically create closing pair for braces, parens, etc.
+Plug 'lunarWatcher/auto-pairs', { 'tag': '*'  }
 " Syntastic
 Plug 'vim-syntastic/syntastic'
 " Rust
 Plug 'rust-lang/rust.vim'
 " Scala
 Plug 'derekwyatt/vim-scala'
+" Javascript
+Plug 'pangloss/vim-javascript'
+" Vim autoformat
+Plug 'vim-autoformat/vim-autoformat'
 " Ranger - Explorer
 Plug 'francoiscabrol/ranger.vim'
 " Vim Tmux Navigator - Navigate between Vim/Tmux tabs
@@ -93,7 +101,8 @@ set splitright
 " Key Remaps
 " Easier than the standard '\'
 let mapleader=","
-" Easier Buffer Management - "+y
+" Easier Buffer Management - "+y, allows copying to system clipboard.
+" Note, `gvim` is required in order to enable this
 noremap <Leader><leader> "+
 " Easier Split Navigations
 nnoremap <C-J> <C-W><C-J>

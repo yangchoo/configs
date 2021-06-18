@@ -1,6 +1,14 @@
-# Profiling Hook
+## Profiling Hook - Start
+# export ZPROF=true
 if [[ "$ZPROF" = true ]]; then
   zmodload zsh/zprof
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Path to your oh-my-zsh installation.
@@ -10,11 +18,14 @@ export ZSH=/home/yang/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="spaceship"
-export SPACESHIP_DOCKER_SHOW=false
-export SPACESHIP_BATTERY_SHOW=false
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export SPACESHIP_PYENV_SYMBOL=""
+## Config for spaceship-prompt
+#ZSH_THEME="spaceship"
+#export SPACESHIP_DOCKER_SHOW=false
+#export SPACESHIP_BATTERY_SHOW=false
+#export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+#export SPACESHIP_PYENV_SYMBOL=""
+## Config for powerlevel10k
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -27,7 +38,7 @@ export SPACESHIP_PYENV_SYMBOL=""
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -54,49 +65,31 @@ export SPACESHIP_PYENV_SYMBOL=""
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# zsh-nvm configs
+## Lazy loading for nvm. Only loads nvm when nvm-commands are invoked
+export NVM_LAZY_LOAD=true
+## Starts nvm.sh with `--no-use`. Calls when `nvm use` is called
+#export NVM_NO_USE=true
+## Automatically use nvm if .nvmrc found in dir
+#export NVM_AUTO_USE=true
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-#    arcanist 
+    autoupdate
     colorize 
     fzf
     git
     kubectl
+    kube-ps1
     pyenv 
     python
     zsh-nvm
     zsh-syntax-highlighting 
     zsh-autosuggestions
 )
-
-# NVM Configs
-## Lazy loading for nvm
-export NVM_LAZY_LOAD=true
-
-## Auto-use of .nvmrc
-#autoload -U add-zsh-hook
-#load-nvmrc() {
-#  local node_version="$(nvm version)"
-#  local nvmrc_path="$(nvm_find_nvmrc)"
-#
-#  if [ -n "$nvmrc_path" ]; then
-#    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-#
-#    if [ "$nvmrc_node_version" = "N/A" ]; then
-#      nvm install
-#    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-#      nvm use
-#    fi
-#  elif [ "$node_version" != "$(nvm version default)" ]; then
-#    echo "Reverting to nvm default version"
-#    nvm use default
-#  fi
-#}
-#add-zsh-hook chpwd load-nvmrc
-#load-nvmrc
-#
 
 # User configuration
 bindkey -e
@@ -171,11 +164,6 @@ _gen_fzf_default_opts
 # FZF config
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
-# End prof hook
-if [[ "$ZPROF" = true ]]; then
-  zprof
-fi
-
 # Overide max-history by 10x
 export HISTSIZE=100000
 export SAVE_HIST=$HISTSIZE
@@ -190,3 +178,12 @@ alias pbpaste='xclip -selection clipboard -o'
 alias lcm='git log -1 --pretty="%b" | pbcopy'
 alias ghist="git log --branches --remotes --tags --graph --oneline --decorate --date=relative --pretty=tformat:'%Cred%h%Cgreen %ad%Creset | %s%d [%an]'"
 alias gblist="git branch --list --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+## Profiling Hook - End
+if [[ "$ZPROF" = true ]]; then
+  zprof
+fi
