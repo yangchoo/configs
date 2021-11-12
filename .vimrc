@@ -28,6 +28,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 " Vim Surround - keyword s (e.g. cs'", ysiw])
 Plug 'tpope/vim-surround'
+" Abolish.vim - Easy multi-match (:%Subert/{f,F}oo/{b,B}ar/g
+Plug 'tpope/vim-abolish'
 " Filetype specific commenting (e.g. <leander>cc)
 Plug 'preservim/nerdcommenter'
 " Automatically create closing pair for braces, parens, etc.

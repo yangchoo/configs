@@ -15,6 +15,9 @@ set surround    " supports ys, cs, ds, S
 " vim-highlightedyank
 set highlightedyank
 
+" vim-multiple-cursors
+set multiple-cursors  " supports <A-n>, <A-x>, <A-p>, g<A-n>
+
 " Key Remaps
 " Easier than the standard '\'
 let mapleader=","
