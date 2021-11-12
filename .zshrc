@@ -12,7 +12,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/yang/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -99,7 +99,7 @@ bindkey '^[[1;9D' backward-word
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Add env.sh
-. /home/yang/env.sh
+. ~/env.sh
 
 source $ZSH/oh-my-zsh.sh
 
