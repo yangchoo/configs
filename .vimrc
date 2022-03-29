@@ -12,11 +12,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-" Base16 - Nicer themes (temp. fix until issue 197 is resolved)
-function FixupBase16(info)
-    !sed -i '/Base16hi/\! s/a:\(attr\|guisp\)/l:\1/g' ~/.vim/plugged/base16-vim/colors/*.vim
-endfunction
-Plug 'chriskempson/base16-vim', { 'do': function('FixupBase16') }
+" Base16 - Nicer themes
+Plug 'chriskempson/base16-vim'
 " Lightline - Nicer status line
 Plug 'itchyny/lightline.vim'
 " Fzf - Nice files search
@@ -48,8 +45,6 @@ Plug 'vim-autoformat/vim-autoformat'
 Plug 'francoiscabrol/ranger.vim'
 " Vim Tmux Navigator - Navigate between Vim/Tmux tabs
 Plug 'christoomey/vim-tmux-navigator'
-
-
 
 call plug#end()
 
