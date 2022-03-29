@@ -46,6 +46,25 @@ Plug 'francoiscabrol/ranger.vim'
 " Vim Tmux Navigator - Navigate between Vim/Tmux tabs
 Plug 'christoomey/vim-tmux-navigator'
 
+" NVIM Plugins - Further configured in init.vim file
+if has('nvim')
+  " Treesitter for better syntax-highlighting
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Language Server Protocol support
+  Plug 'neovim/nvim-lspconfig'
+  " nvim-cmp for auto-completion
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
+  
+  " For vsnip users.
+  Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/vim-vsnip'
+endif
+
 call plug#end()
 
 " Use Vim settings, rather than Vi settings (much better!).
