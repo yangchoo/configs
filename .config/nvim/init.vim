@@ -41,6 +41,7 @@ set foldexpr=nvim_treesitter#foldexpr()
 " nvim-lsp config
 lua <<EOF
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.bashls.setup{}
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -75,7 +76,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright' }
+local servers = { 'pyright', 'bashls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,

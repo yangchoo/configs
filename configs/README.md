@@ -2,7 +2,7 @@
 Collection of shell config stuff
 
 ## Directions
-```
+```shell
 git clone --no-checkout git@github.com:yangchoo/configs.git
 cd configs
 git config core.worktree "../../"
@@ -19,6 +19,11 @@ git reset --hard origin/master
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) - Better shell history search (ctrl-r)
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh) - Clearer highlighting of shell commands
     - [zsh-nvm](https://github.com/lukechilds/zsh-nvm#as-an-oh-my-zsh-custom-plugin) - Manage node using nvm
+
+### Optional Neovim setup
+1. Install Language servers
+    - [pyright](https://github.com/microsoft/pyright) - Python langserver. `npm install -g pyright`
+    - [bash](https://github.com/bash-lsp/bash-language-server) - Bash langserver. `npm install -g bash-language-server`
 
 ### Generally Useful Shell Utils
 Install via package manager (apt, pamac, port, etc.)
