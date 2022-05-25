@@ -37,6 +37,8 @@ EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
+" vim-autoformat requires python with pynvim installed
+let g:python3_host_prog="/home/yang/.pyenv/shims/python"
 
 " nvim-cmp config
 set completeopt=menu,menuone,noselect
