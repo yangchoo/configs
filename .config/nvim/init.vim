@@ -33,6 +33,19 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+" telescope config
+" Ranger currently default maps to <leader>f. Overwrite when using telescope
+let g:ranger_map_keys = 0
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+lua <<EOF
+require('telescope').load_extension('fzf')
+EOF
+
+
 " Folding
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
