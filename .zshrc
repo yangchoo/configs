@@ -25,7 +25,13 @@ export ZSH=~/.oh-my-zsh
 #export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 #export SPACESHIP_PYENV_SYMBOL=""
 ## Config for powerlevel10k
-ZSH_THEME="powerlevel10k/powerlevel10k"
+### If git clone directly into oh-my-zsh themes
+if [[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]]; then
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+else
+### If install via package manager
+    source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -193,3 +199,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 if [[ "$ZPROF" = true ]]; then
   zprof
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
