@@ -25,6 +25,9 @@ git reset --hard origin/master
     - [pyright](https://github.com/microsoft/pyright) - Python langserver. `npm install -g pyright`
     - [bash](https://github.com/bash-lsp/bash-language-server) - Bash langserver. `npm install -g bash-language-server`
 
+### Optional Tmux setup
+1. Install [tpm (tmux plugin manager)](https://github.com/tmux-plugins/tpm#installation)
+
 ### Generally Useful Shell Utils
 Install via package manager (apt, pamac, port, etc.)
 1. tmux - terminal multiplexer
