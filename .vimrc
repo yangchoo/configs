@@ -67,6 +67,8 @@ if has('nvim')
   " For vsnip users.
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
+  " Simple git blame
+  Plug 'f-person/git-blame.nvim'
 endif
 
 call plug#end()

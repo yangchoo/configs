@@ -199,3 +199,7 @@ for _, lsp in pairs(servers) do
   }
 end
 EOF
+
+" git-blame config
+let g:gitblame_enabled = 0
+let g:gitblame_date_format = '%r'
