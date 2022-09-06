@@ -69,6 +69,8 @@ if has('nvim')
   Plug 'hrsh7th/vim-vsnip'
   " Simple git blame
   Plug 'f-person/git-blame.nvim'
+  " Override netrw for Explorer
+  Plug 'rbgrouleff/bclose.vim'
 endif
 
 call plug#end()
@@ -150,3 +152,5 @@ map ; :Files<CR>
 " GitGutter
 set updatetime=100 " 100ms update for faster git status
 
+" Ranger
+let g:ranger_replace_netrw = 1  " open ranger when vim open a directory
