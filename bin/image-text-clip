@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Helper script which copies text from a screenshot to the clipboard
+# Requires flameshot for screenshot selection and tesseract for OCR
+flameshot gui --raw | tesseract stdin stdout | xclip -in -selection clipboard
