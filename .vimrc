@@ -39,6 +39,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'derekwyatt/vim-scala'
 " Javascript
 Plug 'pangloss/vim-javascript'
+" Ansible
+Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 " Vim autoformat
 Plug 'vim-autoformat/vim-autoformat'
 " Ranger - Explorer

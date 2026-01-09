@@ -7,9 +7,9 @@ fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -26,12 +26,12 @@ export ZSH=~/.oh-my-zsh
 #export SPACESHIP_PYENV_SYMBOL=""
 ## Config for powerlevel10k
 ### If git clone directly into oh-my-zsh themes
-if [[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]]; then
-    ZSH_THEME="powerlevel10k/powerlevel10k"
-else
-### If install via package manager
-    source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-fi
+# if [[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]]; then
+#     ZSH_THEME="powerlevel10k/powerlevel10k"
+# else
+# ### If install via package manager
+#     source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -90,6 +90,7 @@ plugins=(
     git
     kubectl
     kube-ps1
+    poetry
     pyenv 
     python
     zsh-nvm
@@ -107,6 +108,12 @@ bindkey '^[[1;9D' backward-word
 
 # Add env.sh
 . ~/env.sh
+
+# Starship prompt configuration
+eval "$(starship init zsh)"
+
+
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -189,7 +196,7 @@ alias gblist="git branch --list --sort=-committerdate --format='%(HEAD) %(color:
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -200,6 +207,17 @@ if [[ "$ZPROF" = true ]]; then
   zprof
 fi
 
+# ASDF
+export ASDF_DATA_DIR="/home/yang/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# add Pulumi to the PATH
+export PATH=$PATH:/home/yang/.pulumi/bin
+
+export AWS_PROFILE="monomer-sso-poweruser"
+

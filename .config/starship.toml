@@ -1,0 +1,136 @@
+# ~/.config/starship.toml
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Set a command timeout of 2 seconds
+command_timeout = 2000
+
+# Format the entire prompt
+# Line 1: [Directory] [Git Branch] [Git Status] -> Right aligned: [Cmd Duration] [Jobs] [Status] etc.
+# Line 2: [Character]
+format = """$directory$git_branch$git_status$line_break$character"""
+right_format = """$all"""
+
+[directory]
+style = "blue"
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold green)"
+
+# --- Git ---
+# [git_branch]
+# symbol = ""
+# style = "yellow"
+# format = " [$symbol $branch]($style)"
+# 
+# [git_commit]
+# style = "bg:#DA627D"
+# commit_hash_length = 8
+# format = "[[commit ($hash)](fg:#000000)]($style)"
+# only_detached = true
+
+# [git_state]
+# style = "bg:#FCA17D"
+# format = '[\(state( $progress_current of $progress_total)\)]($style)'
+
+[git_status]
+# style = "yellow"
+format = '([$staged$modified$untracked]($style))'
+staged = " +${count}"
+modified = " !${count}"
+untracked = " ?${count}"
+
+# --- Language & Tool Modules (mimicking p10k right prompt) ---
+
+[aws]
+symbol = "aws "
+format = 'on [$symbol($profile )]($style) '
+
+[conda]
+symbol = "conda "
+format = '[$symbol$environment]($style) '
+
+[dart]
+symbol = " "
+format = 'via [$symbol($version )]($style) '
+
+[direnv]
+format = 'via [$symbol]($style) '
+
+[docker_context]
+symbol = " "
+format = 'via [$symbol$context]($style) '
+
+[dotnet]
+symbol = " "
+format = '[$symbol($version )(🎯 $tfm )]($style) '
+
+[gcloud]
+symbol = "cloud "
+format = 'on [$symbol$account@$project]($style) '
+
+[golang]
+symbol = " "
+format = 'via [$symbol($version )]($style) '
+
+[java]
+symbol = " "
+format = 'via [$symbol($version )]($style) '
+
+# [kubernetes]
+# symbol = "☸ "
+# format = 'on [$symbol$context( \($namespace\))]($style) '
+# disabled = false
+# [[kubernetes.contexts]]
+# context_pattern = "arn:aws:eks:us-west-2:742073802618:cluster/staging"
+# context_alias = "staging"
+
+[nodejs]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[python]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[ruby]
+symbol = " "
+format = 'via [$symbol($version )]($style) '
+
+[rust]
+symbol = " "
+format = 'via [$symbol($version )]($style) '
+
+[terraform]
+symbol = "terraform "
+format = 'on [$symbol$workspace]($style) '
+
+
+# --- System Info ---
+
+[cmd_duration]
+min_time = 3000
+format = 'took [$duration]($style) '
+
+[jobs]
+symbol = ""
+format = '[$symbol]($style) '
+
+[status]
+format = '[$symbol$status]($style) '
+symbol = "🔥"
+success_symbol = "" # Don't show success status
+not_found_symbol = "🔍"
+not_executable_symbol = "🚫"
+signal_symbol = "⚡"
+pipestatus = true
+disabled = false
